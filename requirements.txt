@@ -1,0 +1,7 @@
+openai
+transformers
+datasets
+vllm
+accelerate
+line_profiler
+memory_profiler
