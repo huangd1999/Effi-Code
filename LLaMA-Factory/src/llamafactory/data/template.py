@@ -626,6 +626,19 @@ _register_template(
     default_system=(""),
 )
 
+
+_register_template(
+    name="efficoder",
+    format_user=StringFormatter(slots=[
+        "Please continue to complete the function. You are not allowed to modify the given code and do the completion only. Please return all completed function in a codeblock. Here is the given code to do completion:\n```python\n{{content}}\n"
+        ]),
+    format_assistant=StringFormatter(slots=["\n{{content}}\n```"]),
+    format_separator=EmptyFormatter(slots=["\n"]),
+    format_prefix=EmptyFormatter(slots=[{"bos_token"}]),
+    default_system=(""),
+)
+
+
 _register_template(
     name="default",
     format_user=StringFormatter(slots=["Human: {{content}}\nAssistant:"]),
@@ -943,6 +956,30 @@ _register_template(
     stop_words=["<|im_end|>"],
     replace_eos=True,
     replace_jinja_template=False,
+)
+
+
+_register_template(
+    name="efficoderqwen",
+    format_user=StringFormatter(slots=[
+        "Please continue to complete the function. You are not allowed to modify the given code and do the completion only. Please return all completed function in a codeblock. Here is the given code to do completion:\n```python\n{{content}}\n"
+        ]),
+    format_assistant=StringFormatter(slots=["\n{{content}}\n```<|im_end|>"]),
+    format_separator=EmptyFormatter(slots=["\n"]),
+    format_prefix=EmptyFormatter(slots=[{"bos_token"}]),
+    default_system=(""),
+)
+
+
+_register_template(
+    name="deepseekllama",
+    format_user=StringFormatter(slots=[
+        "Please continue to complete the function. You are not allowed to modify the given code and do the completion only. Please return all completed function in a codeblock. Here is the given code to do completion:\n```python\n{{content}}\n"
+        ]),
+    format_assistant=StringFormatter(slots=["\n{{content}}\n```<|eot_id|>"]),
+    format_separator=EmptyFormatter(slots=["\n"]),
+    format_prefix=EmptyFormatter(slots=[{"bos_token"}]),
+    default_system=(""),
 )
 
 
